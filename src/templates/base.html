@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %} Acceuil {% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'posts:home' %}">Acceuil</a>
+        {% if request.user.is_authenticated %} 
+            &nbsp;&nbsp;<a href="{% url 'posts:create' %}">Ajouter un article</a>
+        {% endif %}
+    </nav>
+    <section id="blog">
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>

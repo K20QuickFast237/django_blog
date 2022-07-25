@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {{ post.title }} {% endblock %}
+
+
+{% block content %} 
+
+    <article class="post-detail">
+        <h1>{{ post.title }}</h1>
+        {% if post.tumbnail %} 
+            <img src="{{ post.tumbnail.url }}" alt="image de l'article">
+        {% endif %}
+        <div>{{ post.content|linebreaks|safe }}</div> <!-- linebreaks transforme les \n en <br> et safe permet l'interpretation des balises html -->
+    </article>
+
+{% endblock %}
